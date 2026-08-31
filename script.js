@@ -1,43 +1,46 @@
-// مصفوفة تعبر عن شكل القلب كشبكة (1 يعني مكان قلبي، 0 يعني فراغ)
-const heartPattern = [
-    [0,1,1,0,0,1,1,0],
-    [1,1,1,1,1,1,1,1],
-    [1,1,1,1,1,1,1,1],
-    [0,1,1,1,1,1,1,0],
-    [0,0,1,1,1,1,0,0],
-    [0,0,0,1,1,0,0,0]
-];
+// 1. توليد القلوب الخلفية بشكل عشوائي
+const heartsContainer = document.getElementById('heartsContainer');
+const heartIcons = ['❤️', '💖', '💕', '💗', '✨'];
 
-const container = document.getElementById('heartContainer');
-const loveText = document.getElementById('loveText');
-const size = 25; // حجم كل مربع بالقواطع
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart-particle');
+    heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+    
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+    heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+    
+    heartsContainer.appendChild(heart);
 
-let delay = 0;
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
 
-// رسم القلوب بالتدريج
-heartPattern.forEach((row, rowIndex) => {
-    row.forEach((cell, colIndex) => {
-        if (cell === 1) {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-piece');
-            
-            // تحديد مكان كل قطعة على الشاشة
-            heart.style.left = `${colIndex * size}px`;
-            heart.style.top = `${rowIndex * size}px`;
-            
-            container.appendChild(heart);
+setInterval(createHeart, 300);
 
-            // إظهار قطع القلب واحدة تلو الأخرى مع تأثير زمني
-            setTimeout(() => {
-                heart.style.opacity = '1';
-            }, delay);
+// 2. تأثير كتابة النص التدريجي كأنه مشهد
+const message = "كل ثانية وأنتي معايا هي أجمل وقت في حياتي... أردت فقط أن أقول لكِ:";
+const typedTextElement = document.getElementById('typedText');
+const loveYouText = document.getElementById('loveYouText');
 
-            delay += 60; // وقت التخير بين ظهور كل قلب
-        }
-    });
-});
+let index = 0;
 
-// إظهار نص I Love You بعد اكتمال ورسم جميع القلوب
-setTimeout(() => {
-    loveText.classList.add('show');
-}, delay + 300);
+function typeWriter() {
+    if (index < message.length) {
+        typedTextElement.innerHTML += message.charAt(index);
+        index++;
+        setTimeout(typeWriter, 70); // سرعة كتابة كل حرف
+    } else {
+        // بعد انتهاء النص، تظهر كلمة I Love You
+        setTimeout(() => {
+            loveYouText.classList.add('show');
+        }, 500);
+    }
+}
+
+// بدء تأثير الكتابة بعد فتح الصفحة بثانية
+window.onload = () => {
+    setTimeout(typeWriter, 1000);
+};
