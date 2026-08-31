@@ -1,94 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* استبدل الجزء الخاص بالصور في ملف الـ CSS القديم بالكود ده */
 
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* خلفية حمراء بيكسيلز كأنها شبكة 8-bit */
-    background-color: #8b0000;
-    background-image: 
-        linear-gradient(45deg, #a30000 25%, transparent 25%, transparent 75%, #a30000 75%, #a30000),
-        linear-gradient(45deg, #a30000 25%, transparent 25%, transparent 75%, #a30000 75%, #a30000);
-    background-size: 20px 20px;
-    background-position: 0 0, 10px 10px;
-    font-family: 'Press Start 2P', cursive;
-    overflow: hidden;
-    text-align: center;
-}
-
-/* شكل الظرف (الرسالة) بالـ CSS Pixel Art */
-.pixel-envelope-container {
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.pixel-envelope-container:hover {
-    transform: scale(1.1);
-}
-
-.pixel-envelope {
-    width: 140px;
-    height: 90px;
-    background: #fff;
-    border: 8px solid #000;
-    position: relative;
-    margin: 0 auto 20px auto;
-    box-shadow: 8px 8px 0px #000;
-}
-
-.pixel-envelope::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -8px;
-    border-left: 70px solid transparent;
-    border-right: 70px solid transparent;
-    border-top: 45px solid #000;
-}
-
-.pixel-envelope::after {
-    content: "";
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    border-left: 70px solid transparent;
-    border-right: 70px solid transparent;
-    border-top: 45px solid #fff;
-}
-
-.pixel-text {
-    color: #fff;
-    text-shadow: 2px 2px 0px #000;
-    font-size: 14px;
-    margin-top: 20px;
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* الكارت الأساسي */
-.hidden {
-    display: none;
-}
-
-.main-card {
-    background: #ffcccc;
-    border: 8px solid #000;
-    padding: 30px;
-    box-shadow: 12px 12px 0px #000;
-    width: 90%;
-    max-width: 500px;
-}
-
-/* الصور البيكسل */
 .media-container {
     display: flex;
     flex-direction: column;
@@ -96,67 +7,30 @@ body {
     margin-bottom: 20px;
 }
 
-img {
-    /* الخاصية دي بتمنع غلوشة الصور وتخلي البيكسلز واضحة جداً */
-    image-rendering: pixelated; 
+#catIcon {
+    font-size: 100px;
+    color: #333;
+    /* ظل عشان يدي إحساس البيكسل البارز */
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.2); 
+    animation: catBounce 1s infinite alternate;
 }
 
-#catImage {
-    width: 150px;
-    height: auto;
+#heartIcon {
+    font-size: 40px;
+    color: #ff0000;
+    margin-top: -15px;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+    animation: pulse 0.8s infinite alternate;
 }
 
-#heartImage {
-    width: 60px;
-    margin-top: -10px;
-    animation: pulse 1s infinite alternate;
+/* حركة القطة */
+@keyframes catBounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
 }
 
+/* حركة القلب */
 @keyframes pulse {
     0% { transform: scale(1); }
-    100% { transform: scale(1.2); }
-}
-
-.pixel-title {
-    font-size: 18px;
-    color: #000;
-    margin-bottom: 30px;
-    line-height: 1.5;
-}
-
-/* أزرار الـ 8-Bit */
-.buttons-container {
-    position: relative;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.pixel-btn {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 14px;
-    padding: 15px 20px;
-    border: 6px solid #000;
-    cursor: pointer;
-    background: #fff;
-    box-shadow: 4px 4px 0px #000;
-    transition: transform 0.1s;
-}
-
-.pixel-btn:active {
-    box-shadow: 0px 0px 0px #000;
-    transform: translate(4px, 4px);
-}
-
-.yes-btn {
-    background: #ff4d6d;
-    color: #fff;
-}
-
-.no-btn {
-    background: #ccc;
-    color: #000;
-    position: absolute;
-    right: 50px;
+    100% { transform: scale(1.3); }
 }
