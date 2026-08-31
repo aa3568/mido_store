@@ -1,19 +1,34 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love ❤️</title>
+    <title>For You ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="hearts-container" id="heartsContainer"></div>
+    <div class="bg-hearts" id="bgHearts"></div>
 
-    <div class="card">
-        <div class="main-heart">❤️</div>
-        <div class="typed-text" id="typedText"></div>
-        <div class="love-you-btn" id="loveYouText">I Love You ❤️</div>
+    <div class="envelope-card" id="envelopeCard" onclick="openEnvelope()">
+        <div class="envelope-icon">✉️</div>
+        <h2>عندك رسالة جديدة!</h2>
+        <p>اضغطي هنا عشان تفتحيها ❤️</p>
+    </div>
+
+    <div class="main-card hidden" id="mainCard">
+        
+        <div class="cat-box" id="catBox">
+            <span class="cat-emoji" id="catEmoji">🐱💖</span>
+        </div>
+
+        <h1 id="questionText">Do You Love Me? 🥺</h1>
+
+        <div class="buttons-container" id="buttonsContainer">
+            <button class="btn yes-btn" id="yesBtn" onclick="handleYes()">Yes! 🥰</button>
+            <button class="btn no-btn" id="noBtn">No 😜</button>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
