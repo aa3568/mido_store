@@ -1,70 +1,51 @@
-// 1. توليد قلوب الخلفية بشكل عشوائي ومستمر
-const bgHearts = document.getElementById('bgHearts');
-const heartTypes = ['❤️', '💖', '💕', '💗', '🌸'];
-
-function createBgHeart() {
-    const heart = document.createElement('div');
-    heart.classList.add('bg-heart');
-    heart.innerText = heartTypes[Math.floor(Math.random() * heartTypes.length)];
-    
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-    
-    bgHearts.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
-}
-
-setInterval(createBgHeart, 200);
-
-// 2. فتح كارت الرسالة
+// فتح الرسالة
 function openEnvelope() {
     document.getElementById('envelopeCard').classList.add('hidden');
     document.getElementById('mainCard').classList.remove('hidden');
 }
 
-// 3. جعل زر "No" يهرب في مكان عشوائي عند الاقتراب منه أو لمسه
+// هروب زرار الـ NO
 const noBtn = document.getElementById('noBtn');
 
 function moveNoButton() {
-    // حساب أبعاد الشاشة لمنع الزر من الخروج بره الشاشة
-    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40);
-    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 40);
+    // تحديد أبعاد تتحرك فيها بشكل عشوائي
+    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+    
+    const x = Math.max(0, Math.random() * maxX);
+    const y = Math.max(0, Math.random() * maxY);
     
     noBtn.style.position = 'fixed';
     noBtn.style.left = `${x}px`;
     noBtn.style.top = `${y}px`;
 }
 
-// يهرب في الكومبيوتر عند مرور الماوس، وفي الموبايل عند اللمس
+// يهرب لو الماوس لمسه أو على الموبايل
 noBtn.addEventListener('mouseover', moveNoButton);
 noBtn.addEventListener('touchstart', (e) => {
-    e.preventDefault(); // يمنع الضغطة
+    e.preventDefault();
     moveNoButton();
 });
 
-// 4. عند الضغط على "Yes"
+// لما تضغط YES
 function handleYes() {
-    const catEmoji = document.getElementById('catEmoji');
     const questionText = document.getElementById('questionText');
     const buttonsContainer = document.getElementById('buttonsContainer');
+    const catImage = document.getElementById('catImage');
 
-    // تغيير القطة لتفرح
-    catEmoji.innerText = '😻🎉';
-    catEmoji.style.fontSize = '110px';
+    // تغيير النص
+    questionText.innerText = "I LOVE YOU TOO! <3";
+    questionText.style.color = "#ff0000";
+    
+    // تغيير القطة لقطة تانية بتفرح (تقدر تحط لينك قطة بيكسل تانية)
+    catImage.src = "https://media.tenor.com/tHqgK6b2E6UAAAAi/cat-dance.gif";
 
-    // تغيير العنوان
-    questionText.innerText = 'I Love You Too! ❤️🥰✨';
-    questionText.style.fontSize = '2.2rem';
-
-    // إخفاء الأزرار
+    // إخفاء الزراير
     buttonsContainer.style.display = 'none';
 
-    // إضافة احتفال بالقلوب بكثافة
-    for (let i = 0; i < 40; i++) {
-        setTimeout(createBgHeart, i * 50);
-    }
+    // عمل تأثير الفلاش السريع (زي ما بيحصل في الألعاب لما تكسب)
+    document.body.style.backgroundColor = "#ff4d6d";
+    setTimeout(() => {
+        document.body.style.backgroundColor = "#8b0000";
+    }, 200);
 }
