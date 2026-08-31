@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You ❤️</title>
+    <title>Pixel Love ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="bg-hearts" id="bgHearts"></div>
-
-    <div class="envelope-card" id="envelopeCard" onclick="openEnvelope()">
-        <div class="envelope-icon">✉️</div>
-        <h2>عندك رسالة جديدة!</h2>
-        <p>اضغطي هنا عشان تفتحيها ❤️</p>
+    <div class="pixel-envelope-container" id="envelopeCard" onclick="openEnvelope()">
+        <div class="pixel-envelope"></div>
+        <p class="pixel-text">Click To Open!</p>
     </div>
 
     <div class="main-card hidden" id="mainCard">
         
-        <div class="cat-box" id="catBox">
-            <span class="cat-emoji" id="catEmoji">🐱💖</span>
+        <div class="media-container">
+            <img src="https://media.tenor.com/8-l6p8OipP0AAAAi/cat-pixel.gif" id="catImage" alt="Pixel Cat">
+            <img src="https://media.tenor.com/wP0c3Fw8y0cAAAAi/pixel-heart.gif" id="heartImage" alt="Pixel Heart">
         </div>
 
-        <h1 id="questionText">Do You Love Me? 🥺</h1>
+        <h1 class="pixel-title" id="questionText">DO YOU LOVE ME?</h1>
 
         <div class="buttons-container" id="buttonsContainer">
-            <button class="btn yes-btn" id="yesBtn" onclick="handleYes()">Yes! 🥰</button>
-            <button class="btn no-btn" id="noBtn">No 😜</button>
+            <button class="pixel-btn yes-btn" id="yesBtn" onclick="handleYes()">YES</button>
+            <button class="pixel-btn no-btn" id="noBtn">NO</button>
         </div>
 
     </div>
