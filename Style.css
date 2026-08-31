@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.love-stage {
+    position: relative;
+    width: 600px;
+    height: 500px;
+    background-color: #fff8f8;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.character-gif {
+    position: absolute;
+    left: 30px;
+    bottom: 50px;
+    width: 180px;
+}
+
+.heart-container {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    width: 320px;
+    height: 320px;
+}
+
+/* تنسيق مربعات القلوب من الكود الخاص بك */
+.love-block div, .heart-piece {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background: url("../images/heart.png") no-repeat center/contain;
+    background-color: #c40908;
+    border: 1px solid silver;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.love-text {
+    position: absolute;
+    bottom: 40px;
+    right: 110px;
+    color: #d1526d;
+    font-size: 2.2rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.love-text.show {
+    opacity: 1;
+}
